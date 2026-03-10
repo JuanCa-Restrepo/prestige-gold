@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Collections from "../components/Collections";
 import FeaturedPieces from "../components/FeaturedPieces";
+import Craftsmanship from "../components/Craftsmanship";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
         <Hero />
         <Collections />
         <FeaturedPieces />
+        <Craftsmanship />
       </main>
     </div>
   );
