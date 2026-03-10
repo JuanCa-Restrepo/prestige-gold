@@ -1,5 +1,6 @@
 import { Menu, Search, ShoppingBag, User } from "lucide-react";
 import Container from "./Container";
+import logoPg from "../assets/logo/logo-pg.png";
 
 function Header() {
   return (
@@ -41,12 +42,12 @@ function Header() {
           </button>
 
           <a href="#" className="flex items-center justify-center">
-            <img
-            src="/src/assets/logo/logo-pg.png"
-            alt="Prestige Gold"
-            className="h-16 w-16 rounded-full object-cover"
-/               >
-          </a>
+  <img
+    src={logoPg}
+    alt="Prestige Gold"
+    className="h-16 w-16 rounded-full object-cover"
+  />
+</a>    
 
           <div className="flex items-center gap-3 md:gap-4">
             <button
