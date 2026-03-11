@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/navigation";
 
 import Container from "./Container";
 import SectionTitle from "./SectionTitle";
@@ -14,74 +13,60 @@ import dijesImg from "../assets/images/collections/dijes.jpeg";
 import otrosImg from "../assets/images/collections/otros.jpeg";
 
 const collections = [
-  { title: "Manillas", image: manillasImg, href: "#catalogo" },
-  { title: "Anillos", image: anillosImg, href: "#catalogo" },
-  { title: "Dijes", image: dijesImg, href: "#catalogo" },
-  { title: "Otros", image: otrosImg, href: "#catalogo" },
+  { title: "Manillas", image: manillasImg },
+  { title: "Anillos", image: anillosImg },
+  { title: "Dijes", image: dijesImg },
+  { title: "Otros", image: otrosImg },
 ];
 
 function Collections() {
   return (
-    <section id="colecciones" className="py-20 md:py-28">
+    <section className="py-24">
       <Container>
         <SectionTitle
           eyebrow="Colecciones"
           title="Explora por categoría"
-          description="Una navegación más visual, fluida e interactiva para descubrir cada tipo de pieza."
           center
         />
 
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-12"
-        >
+        <div className="relative mt-12">
+
+          {/* FLECHA IZQUIERDA */}
+          <button className="collection-prev absolute left-[-20px] top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-black/60 backdrop-blur-md transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]">
+            <ChevronLeft size={22}/>
+          </button>
+
+          {/* FLECHA DERECHA */}
+          <button className="collection-next absolute right-[-20px] top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-[var(--color-border)] bg-black/60 backdrop-blur-md transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]">
+            <ChevronRight size={22}/>
+          </button>
+
           <Swiper
             modules={[Navigation]}
-            navigation
-            spaceBetween={20}
-            grabCursor={true}
-            slidesPerView={1.1}
-            breakpoints={{
-              640: {
-                slidesPerView: 1.4,
-                spaceBetween: 20,
-              },
-              768: {
-                slidesPerView: 2.1,
-                spaceBetween: 22,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 24,
-              },
-              1280: {
-                slidesPerView: 3.4,
-                spaceBetween: 24,
-              },
+            navigation={{
+              nextEl: ".collection-next",
+              prevEl: ".collection-prev",
             }}
-            className="prestige-swiper"
+            spaceBetween={24}
+            slidesPerView={1.2}
+            breakpoints={{
+              640: { slidesPerView: 1.6 },
+              768: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 3.4 },
+            }}
           >
             {collections.map((item, index) => (
-              <SwiperSlide key={item.title}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.45, delay: index * 0.06 }}
-                  viewport={{ once: true }}
-                >
-                  <CollectionCard
-                    title={item.title}
-                    image={item.image}
-                    href={item.href}
-                  />
-                </motion.div>
+              <SwiperSlide key={index}>
+                <CollectionCard
+                  title={item.title}
+                  image={item.image}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
-        </motion.div>
+
+        </div>
       </Container>
     </section>
   );
