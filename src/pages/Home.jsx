@@ -13,11 +13,11 @@ function Home() {
       <main>
         <Hero />
         <Divider />
-        <Collections />
+        <Catalog />
         <Divider />
         <FeaturedPieces />
         <Divider />
-        <Catalog />
+        <Collections />       
         <Divider />
         <Craftsmanship />
       </main>
